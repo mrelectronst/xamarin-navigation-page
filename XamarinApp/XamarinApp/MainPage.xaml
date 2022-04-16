@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinApp.MainPage">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android">0,10,0,0</On>
+            <On Platform="iOS">0,40,0,0</On>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+    <StackLayout HorizontalOptions="Center">
+        <BoxView Color="Red" BindingContext="{x:Reference slider}" 
+                 Opacity="{Binding
+                    Path=Value}">
+        </BoxView>
+        <Label
+            BindingContext="{x:Reference slider}"
+            Text="{Binding
+                    Path=Value,
+                    StringFormat='Value : {0:F3}'
+                    }"
+                Opacity="{Binding
+                    Path=Value}"
+                x:Name="label"></Label>
+        <Slider  x:Name="slider"></Slider>
+        <Button Text="Go to Next Page" Clicked="Button_Clicked"></Button>
+    </StackLayout>
+
+</ContentPage>
